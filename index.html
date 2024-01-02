@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
+    <script>
+        window._AMapSecurityConfig = {
+            securityJsCode: '290ddc4b0d33be7bc9b354bc6a4ca614',
+        }
+    </script>
+    <script src="./js/index.js"></script>
+    <title>南京市地铁信息查询系统</title>
+</head>
+
+<body>
+    <!--顶部导航栏-->
+    <nav>
+        <span><a href="./index.html">南京市地铁信息查询系统</a></span>
+        <a href="./index.html" style="color:#FFC000;font-weight: bold;">首页</a>
+        <a href="./child_html/data.html">平台概述</a>
+        <a href="./child_html/map.html">查询地图</a>
+        <a href="./index.html">学术成果</a>
+        <a href="./index.html">数据中心</a>
+
+        <a href="./index.html" class="login-button">登录</a>
+        <a href="./index.html" class="register-button">注册</a>
+    </nav>
+    <!--新闻-->
+    <div id="image-container">
+        <img src="./data/homepage.png" alt="Image 1" id="image">
+    </div>
+
+    <!--新闻动态-->
+    <div id="news">
+        <span id="news_title">新闻动态</span>
+        <a href="./index.html" id="news_readmore">查看更多</a>
+        <!--分割线-->
+        <div class="element-with-line"></div>
+
+        <div id="news_content">
+            <div id="news_photos">
+                <a href="./index.html">
+                    <img src="./data/newpic.png" alt="">
+                </a>
+            </div>
+            <div id="news_words">
+                <a href="./webgis_map.html" id="news_1">南京市地铁信息查询系统-实验报告</a>
+                <div class="element-with-line2"></div>
+                <a href="./webgis_map.html" id="news_2">南京市地铁信息查询系统-使用说明</a>
+                <div class="element-with-line2"></div>
+                <a href="./webgis_map.html" id="news_3">南京市地铁信息查询系统-服务设计报告</a>
+                <div class="element-with-line2"></div>
+                <a href="./webgis_map.html" id="news_3">数据源码：</a>
+                <div class="element-with-line2"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

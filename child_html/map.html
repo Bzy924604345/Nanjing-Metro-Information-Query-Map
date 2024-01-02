@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地铁信息查询地图</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <script>
+        window._AMapSecurityConfig = {
+            securityJsCode: '657d047c79867074abbdfe9c31e35e52',
+        }
+    </script>
+    <script src="../js/axios.js"></script>
+</head>
+
+<body>
+    <!--顶部导航栏-->
+    <nav>
+        <span><a href="../index.html">南京市地铁信息查询系统</a></span>
+        <a href="../index.html">首页</a>
+        <a href="./data.html">平台概述</a>
+        <a href="./map.html" style="color:#FFC000;font-weight: bold;">查询地图</a>
+        <a href="../index.html">学术成果</a>
+        <a href="../index.html">数据中心</a>
+
+        <a href="../index.html" class="login-button">登录</a>
+        <a href="../index.html" class="register-button">注册</a>
+    </nav>
+    <div class="main_container">
+        <div id="map"></div>
+        <!-- 搜索与分析组件 -->
+        <div class="search_and_filter_container">
+            <!-- 搜索分析按钮 -->
+            <div class="circle">
+                <div class="half01 half-circle" onclick="rotateCircle210()">
+                    <div class="half01-text">搜索</div>
+                </div>
+                <div class="half02 half-circle" onclick="rotateCircle330()">
+                    <div class="half02-text">分析</div>
+                </div>
+            </div>
+
+            <!-- 搜索栏 -->
+            <div class="searchContainer">
+                <div class="container">
+                    <input type="text" name="text" class="input" placeholder="搜索地铁站/地铁线">
+                    <button class="search_btn" onclick="searchSubway()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
+                            <path
+                                d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"
+                                fill="#efeff1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- 搜索弹窗 -->
+            <div class="search_results_container">
+                <div class="result_items">
+                    <div class="row1">
+                        <div class="restaurant_name">张亮麻辣烫</div>
+                        <div class="cuisine">非洲菜</div>
+                    </div>
+                    <div class="row2">
+                        <span class="score">4.0</span>
+                        <div class="per">￥90/人</div>
+                    </div>
+                    <div class="row3">
+                        <div class="address">镇江市句容市宝华镇京东紫晶南门7栋157</div>
+                    </div>
+                    <div class="horizontal-line"></div>
+                    </br>
+                </div>
+            </div>
+
+            <!-- 分析栏 -->
+            <div class="filterContainer">
+                <div class="button_container">
+                    <!-- 密度分析 -->
+                    <button class="density_button">密度可视化</button>
+                    <!-- 缓冲区分析 -->
+                    <button class="buffer_button">缓冲区分析</button>
+                </div>
+            </div>
+
+            <!-- 分析工具栏 -->
+            <div class="density_results_container">
+                <div class="input-container">
+                    <label class="input-label" for="radius">radius:</label>
+                    <input type="text" id="radius" class="input-field" value="30">
+                    <p class="instructions">单位：px</p>
+                </div>
+
+                <div class="input-container">
+                    <label class="input-label" for="height">height:</label>
+                    <input type="text" id="height" class="input-field" value="100">
+                    <p class="instructions">值越高，三维高度约明显，但不宜过大</p>
+                </div>
+
+                <button class="submit-button" onclick="renderHeatmap()">应用</button>
+            </div>
+            <div class="buffer_results_container">
+                <div class="input-container">
+                    <label class="input-label">radius:</label>
+                    <input type="text" id="buffer_radius" class="input-field" value="1000">
+                    <p class="instructions">缓冲区半径,单位：米</p>
+                </div>
+
+                <div class="input-container">
+                    <label class="input-label">color:</label>
+                    <input class="jscolor" id="colorPicker" value="#1D6BD5">
+                    <p class="instructions">缓冲区颜色</p>
+                </div>
+
+                <button class="submit-button" onclick="renderBuffer()">应用</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://webapi.amap.com/maps?v=2.0&key=bfabece57d0e240d693bde3a8742bc7c"></script>
+    <script src="https://webapi.amap.com/loca?v=2.0.0&key=bfabece57d0e240d693bde3a8742bc7c"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.5/jscolor.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/circle.js"></script>
+</body>
+
+</html>
